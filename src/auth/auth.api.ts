@@ -8,4 +8,9 @@ export async function login(username: string, password: string) {
     localStorage.setItem("refreshToken", res.data.refreshToken);
 
     return res.data;
-}
+};
+
+export const refreshToken = async () => {
+    const response = await api.post("/auth/refresh");
+    return response.data;
+};

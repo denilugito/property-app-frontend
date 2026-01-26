@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import RoleGuard from "@/components/guards/RoleGuard";
 import { ROLES } from "@/auth/roles";
@@ -13,6 +13,9 @@ import AdminDashboard from "@/pages/admin/Dashboard";
 export default function AppRoutes() {
     return (
         <Routes>
+            {/* Default Path */}
+            <Route path="/" element={<Navigate to="/login" replace />} />
+
             {/* Public */}
             <Route path="/login" element={<Login />} />
             <Route path="/properties" element={<PropertyList />} />
@@ -32,7 +35,7 @@ export default function AppRoutes() {
 
             {/* ADMIN */}
             <Route
-                path="/admin">
+                path="/admin"
                 element={
                     <ProtectedRoute>
                         <RoleGuard roles={[ROLES.ADMIN]}>
@@ -40,7 +43,7 @@ export default function AppRoutes() {
                         </RoleGuard>
                     </ProtectedRoute>
                 }
-            </Route>
+            />
         </Routes>
     );
 }
