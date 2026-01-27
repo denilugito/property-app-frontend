@@ -60,7 +60,8 @@ api.interceptors.response.use(
 
         if (
             error.response?.status == 401 &&
-            !originalRequest._retry
+            !originalRequest._retry &&
+            authStore.getAccessToken()
         ) {
             originalRequest._retry = true;
 

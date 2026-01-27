@@ -14,7 +14,7 @@ export default function AppRoutes() {
     return (
         <Routes>
             {/* Default Path */}
-            <Route path="/" element={<Navigate to="/login" replace />} />
+            <Route path="/" element={<PropertyList />} />
 
             {/* Public */}
             <Route path="/login" element={<Login />} />
