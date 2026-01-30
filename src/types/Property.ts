@@ -10,7 +10,8 @@ export type Property = {
     area?: number;
 
     hasPanorama: boolean;
-    createdAt: string // ISO string from backend
+    createdAt: string; // ISO string from backend
+    imageUrl: string;
 
     // agentId: number; --> do not expose this yet
     agentName: string;
