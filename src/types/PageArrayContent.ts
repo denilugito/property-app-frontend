@@ -4,4 +4,8 @@ export type Page<T> = {
     totalElements: number;
     number: number;
     size: number;
+    first: boolean;
+    last: boolean;
+    numberOfElements: number;
+    empty: boolean;
 }

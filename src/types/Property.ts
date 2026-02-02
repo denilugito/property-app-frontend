@@ -14,5 +14,19 @@ export type Property = {
     imageUrl: string;
 
     // agentId: number; --> do not expose this yet
-    agentName: string;
+    agentName?: string | null;
+
+    // paging related properties
+    number: number;
+    totalPages: number;
+    first: boolean;
+
+    // address related information
+    address? : {
+        province?: string;
+        city?: string;
+        district?: string;
+        subDistrict?: string;
+        postalCode?: string;
+    }
 }
