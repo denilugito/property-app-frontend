@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Property } from "@/types/Property";
+import { Link } from "react-router-dom";
 
 interface PropertyCardProps {
   property: Property;
@@ -85,9 +86,11 @@ export default function PropertyCard({ property }: PropertyCardProps) {
           </div>
           
           {/* CTA Button - More readable */}
-          <button className="w-full rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold py-2.5 transition-colors">
+          <Link
+            to={`/properties/${property.id}`}
+            className="block w-full rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold py-2.5 transition-colors text-center">
             Lihat Detail
-          </button>
+          </Link>
         </div>
       </motion.div>
     </div>

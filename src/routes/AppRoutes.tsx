@@ -5,10 +5,11 @@ import { ROLES } from "@/auth/roles";
 
 import Login from "@/pages/public/Login"
 import PropertyList from "@/pages/public/PropertyList";
-import PropertyDetail from "@/pages/public/PropertyDetail";
+import PropertyDetail from "@/components/property/PropertyDetail";
 
 import UserDashboard from "@/pages/user/Dashboard";
 import AdminDashboard from "@/pages/admin/Dashboard";
+import PropertyDetailPage from "./../pages/public/PropertyDetailPage";
 
 export default function AppRoutes() {
     return (
@@ -19,7 +20,7 @@ export default function AppRoutes() {
             {/* Public */}
             <Route path="/login" element={<Login />} />
             <Route path="/properties" element={<PropertyList />} />
-            <Route path="/properties/:id" element={<PropertyDetail />} />
+            <Route path="/properties/:id" element={<PropertyDetailPage />} />
 
             {/* USER */}
             <Route 

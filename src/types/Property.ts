@@ -29,4 +29,11 @@ export type Property = {
         subDistrict?: string;
         postalCode?: string;
     }
+
+    // List Property Images (Optional for main property listing)
+    propertyImages?: {
+        imageUrl?: string;
+        isPrimary?: boolean;
+        displayOrder ?: number;
+    }[]; 
 }
