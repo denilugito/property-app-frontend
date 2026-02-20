@@ -55,7 +55,7 @@ api.interceptors.response.use(
             originalRequest.url?.includes("/auth/refresh")
         ) {
             authStore.clear();
-            return Promise.reject(error);
+            return Promise.reject(normalizeError(error));
         }
 
         if (
@@ -94,6 +94,20 @@ api.interceptors.response.use(
             }
         }
                 
-        return Promise.reject(error);
+        return Promise.reject(normalizeError(error));
     }
 );
+
+const normalizeError = (error : any) : any => {
+    if (error?.response?.data?.message) {
+        return {
+            status: error.response.status,
+            message: error.response.data.message
+        }
+    }
+
+    return {
+        status: error?.response?.status ?? 0,
+        message: error?.message ?? "Unexpected Error"
+    }
+};

@@ -93,7 +93,7 @@ export default function PropertyDetail({ property } : PropertyDetailProps) {
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            className="relative h-[500px] rounded-2x1 overflow-hidden bg-gray-800 mb-5"
+                            className="relative h-[260px] sm:h-[360px] md:h-[420px] lg:h-[500px] rounded-2x1 overflow-hidden bg-gray-800 mb-5"
                         >
                             {images.length > 0? ( 
                                 <img 
@@ -128,22 +128,23 @@ export default function PropertyDetail({ property } : PropertyDetailProps) {
 
                         {/* Thumbnail Grid */}
                         {images.length > 1 && (
-                            <div className="grid grid-cols-6 gap-3">
+                            <div className="flex gap-3 overflow-x-auto pb-3 px-1 scrollbar-thin">
                                 {images.map((img, idx) => (
                                     <motion.button
-                                        key={idx}
-                                        whileHover={{ scale: 1.05 }}
-                                        onClick={() => setSelectedImage(idx)}
-                                        className={`h-{100px} rounded-lg overflow-hidden border-2 transition-all ${
-                                            selectedImage === idx
-                                                ? "border-blue-500 shadow-lg shadow-blue-500/50"
-                                                : "border-white/20 hover:border-white/50"
+                                    key={idx}
+                                    whileHover={{ scale: 1.03 }}
+                                    onClick={() => setSelectedImage(idx)}
+                                    className={`h-[80px] w-[110px] md:h-[95px] md:w-[135px] lg:h-[105px] lg:w-[150px] flex-shrink-0 rounded-xl overflow-hidden
+                                        border-2 transition ${
+                                        selectedImage === idx
+                                            ? "border-blue-500 shadow-lg shadow-blue-500/30"
+                                            : "border-transparent opacity-70 hover:opacity-100"
                                         }`}
                                     >
-                                        <img src="img" alt={`View ${idx + 1}`} className="w-full h-full object-cover" />
+                                    <img src={img} alt={`View ${idx + 1}`} className="w-full h-full object-cover" />
                                     </motion.button>
                                 ))}
-                            </div>
+                            </div>                            
                         )}
                     </div>
                     
@@ -152,18 +153,18 @@ export default function PropertyDetail({ property } : PropertyDetailProps) {
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
-                        className="grid grid-cols-1 lg:grid-cols-3 gap-10 pb-20"
+                        className="grid grid-cols-1 lg:grid-cols-3 gap-8 pb-20"
                     >
                         {/* Left Column - Main Info */}
                         <div className="lg:col-span-2 space-y-8">
                             {/* Title & Price Section */}
                             <motion.div variants={itemVariants} className="border-b border-white/10 pb-6">
-                                <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">
+                                <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold leading-tight mb-3">
                                     {property.title}
                                 </h1>
 
                                 <div className="mb-3">
-                                    <span className="text-5xl font-bold text-blue-400">
+                                    <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-400">
                                         Rp {property.price.toLocaleString("id-ID")}
                                     </span>
                                 </div>
@@ -175,9 +176,9 @@ export default function PropertyDetail({ property } : PropertyDetailProps) {
                             </motion.div>
 
                             {/* Quick Stats */}
-                            <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <motion.div variants={itemVariants} className="grid grid-cols-3 md:grid-cols-3 gap-3">
                                 {property.bedrooms && (
-                                    <div className="bg-[#1e293b] p-5 rounded-xl border border-white/10 text-center">
+                                    <div className="bg-[#1e293b] p-3 md:p-5 rounded-xl border border-white/10 text-center">
                                         <div className="text-3xl mb-2">🛏️</div>
                                         <div className="text-2xl font-bold mb-1">{property.bedrooms}</div>
                                         <div className="text-sm text-gray-400">Bedrooms</div>
@@ -185,7 +186,7 @@ export default function PropertyDetail({ property } : PropertyDetailProps) {
                                 )}
 
                                 {property.bathrooms && (
-                                    <div className="bg-[#1e293b] p-5 rounded-xl border border-white/10 text-center">
+                                    <div className="bg-[#1e293b] p-3 md:p-5 rounded-xl border border-white/10 text-center">
                                         <div className="text-3xl mb-2">🚿</div>
                                         <div className="text-2xl font-bold mb-1">{property.bathrooms}</div>
                                         <div className="text-sm text-gray-400">Bathrooms</div>
@@ -193,7 +194,7 @@ export default function PropertyDetail({ property } : PropertyDetailProps) {
                                 )}
 
                                 {property.area && (
-                                    <div className="bg-[#1e293b] p-5 rounded-xl border border-white/10 text-center">
+                                    <div className="bg-[#1e293b] p-3 md:p-5 rounded-xl border border-white/10 text-center">
                                         <div className="text-3xl mb-2">📐</div>
                                         <div className="text-2xl font-bold mb-1">{property.area}m²</div>
                                         <div className="text-sm text-gray-400">Land Area</div>
@@ -238,11 +239,11 @@ export default function PropertyDetail({ property } : PropertyDetailProps) {
                         
                         {/* Right Sidebar */}
                         <div className="lg-col-span-1">
-                            <div className="sticky top-5 space-y-6">
+                            <div className="lg:sticky top-5 space-y-6">
                                 {/* Agent Card */}
                                 <motion.div
                                     variants={itemVariants}
-                                    className="bg-gradient-to-br from-[#1e293b] to-[#0f172a] p-7 rounded-2xl border border-white/10"
+                                    className="bg-gradient-to-br from-[#1e293b] to-[#0f172a] p-5 md:p-7 rounded-2xl border border-white/10"
                                 >
                                     <div className="text-center mb-6">
                                         <div className="w-20 h-20 bg-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center text-4xl">

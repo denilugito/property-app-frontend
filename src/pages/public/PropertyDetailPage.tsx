@@ -3,6 +3,7 @@ import PropertyDetail from "@/components/property/PropertyDetail";
 import { Property } from "@/types/Property";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import PropertyDetailSkeleton from './../../components/property/PropertyDetailSkeleton';
 
 export default function PropertyDetailPage() {
     const { id } = useParams();
@@ -17,7 +18,7 @@ export default function PropertyDetailPage() {
             .finally(() => setLoading(false));
     }, [id])
 
-    if (loading) return <div className="p-10 text-white">Loading...</div>;
+    if (loading) return <div className="p-10 text-white"><PropertyDetailSkeleton /></div>;
     if (!property) return <div className="p-10 text-white">Not Found</div>;
 
     return <PropertyDetail property={ property } />;
